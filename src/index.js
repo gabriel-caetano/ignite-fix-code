@@ -22,7 +22,7 @@ app.post("/repositories", (request, response) => {
     techs,
     likes: 0
   };
-
+  repositories.push(repository)
   return response.json(repository);
 });
 
@@ -59,7 +59,8 @@ app.delete("/repositories/:id", (request, response) => {
 
 app.post("/repositories/:id/like", (request, response) => {
   const { id } = request.params;
-
+  console.log(id);
+  console.log(repositories);
   const repositoryIndex = repositories.findIndex(repository => repository.id === id);
 
   if (repositoryIndex < 0) {
